@@ -1,9 +1,8 @@
 extern crate winapi;
 extern crate advapi32;
 
-use std::str;
 use winapi::lmcons::UNLEN;
-use winapi::winnt::CHAR;
+use winapi::winnt::WCHAR;
 use advapi32::GetUserNameW;
 
     
@@ -12,8 +11,8 @@ pub fn user_id() -> u64 {
 }
 
 pub fn user_name() -> String {
-    let mut buf: [u16; 100] = [0; 100];
-    let mut buf_size = 100;
+    let mut buf: [WCHAR; (UNLEN + 1) as usize] = [0; (UNLEN + 1) as usize];
+    let mut buf_size = UNLEN + 1;
     unsafe {
         GetUserNameW(buf.as_mut_ptr(), &mut buf_size);
     }
