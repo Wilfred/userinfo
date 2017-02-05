@@ -8,6 +8,10 @@ This is a cross-platform crate for finding user attributes:
 * user ID
 * group ID
 
+## Example Usage
+
+See [examples/main.rs](https://github.com/Wilfred/userinfo/blob/master/examples/main.rs).
+
 ## Related Projects
 
 The [user crate](https://crates.io/crates/user) is cross-platform, but
