@@ -38,7 +38,7 @@ pub fn login_name(uid: uid_t) -> Option<String> {
 /// `"John Smith"`.
 ///
 /// If the UID does not exist, if the full name is not set, or if the
-/// full is invalid UTF-8, returns None.
+/// full name is invalid UTF-8, returns None.
 pub fn user_full_name(uid: uid_t) -> Option<String> {
     let passwd_info = unsafe { libc::getpwuid(uid) };
     if passwd_info.is_null() {
