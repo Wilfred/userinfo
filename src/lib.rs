@@ -47,7 +47,7 @@ pub fn user_full_name(uid: uid_t) -> Option<String> {
     let name_cstr = unsafe { CStr::from_ptr((*passwd_info).pw_gecos) };
     match name_cstr.to_str() {
         Ok(name) => {
-            if name.len() > 0 {
+            if name.is_empty() {
                 Some(name.to_owned())
             } else {
                 None
