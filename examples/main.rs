@@ -6,5 +6,4 @@ fn main() {
     println!("Your username is {:?}", userinfo::login_name(uid));
     println!("Your full name is {:?}", userinfo::user_full_name(uid));
     println!("Your home directory is {:?}", userinfo::user_home_directory(uid));
-    assert!(false);
 }
