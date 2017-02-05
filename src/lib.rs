@@ -8,11 +8,6 @@ pub fn current_user_id() -> uid_t {
     unsafe { libc::getuid() }
 }
 
-/// Return the login name of the current user.
-pub fn current_login_name() -> String {
-    login_name(current_user_id()).unwrap()
-}
-
 /// Return the login name of the user with the UID given. For example,
 /// `"jsmith"`.
 ///
@@ -60,9 +55,8 @@ mod tests {
     #[test]
     fn test_root_uid() {
         println!("your uid is {}", current_user_id());
-        println!("your login_name is {}", current_login_name());
-        println!("your full name is {}",
-                 user_full_name(current_user_id()).unwrap());
+        println!("your login_name is {:?}", login_name(current_user_id()));
+        println!("your full name is {:?}", user_full_name(current_user_id()));
         assert_eq!(login_name(0).unwrap(), "root");
     }
 }
