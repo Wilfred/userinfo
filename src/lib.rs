@@ -77,12 +77,6 @@ mod tests {
     #[cfg(unix)]
     #[test]
     fn test_root_uid() {
-        println!("your uid is {}", current_user_id());
-        println!("your gid is {}", current_group_id());
-        println!("your login_name is {:?}", login_name(current_user_id()));
-        println!("your full name is {:?}", user_full_name(current_user_id()));
-        println!("your home dir {:?}", user_home_directory(current_user_id()));
-        println!("root home dir {:?}", user_home_directory(0));
         assert_eq!(login_name(0).unwrap(), "root");
     }
 
