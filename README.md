@@ -1,4 +1,5 @@
 # userinfo
+[![Build Status](https://travis-ci.org/Wilfred/userinfo.svg?branch=master)](https://travis-ci.org/Wilfred/userinfo)
 
 This is a cross-platform crate for finding user attributes:
 
