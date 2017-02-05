@@ -80,9 +80,15 @@ mod tests {
         assert_eq!(login_name(0).unwrap(), "root");
     }
 
-    #[cfg(unix)]
+    #[cfg(target_os = "linux")]
     #[test]
     fn test_root_home_dir() {
         assert_eq!(user_home_directory(0).unwrap(), PathBuf::from("/root"));
+    }
+
+    #[cfg(target_os = "mac_os")]
+    #[test]
+    fn test_root_home_dir() {
+        assert_eq!(user_home_directory(0).unwrap(), PathBuf::from("/var/root"));
     }
 }
