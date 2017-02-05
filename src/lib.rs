@@ -9,16 +9,16 @@ pub fn current_user_id() -> uid_t {
 }
 
 /// Return the login name of the current user.
-pub fn current_username() -> String {
-    username(current_user_id()).unwrap()
+pub fn current_login_name() -> String {
+    login_name(current_user_id()).unwrap()
 }
 
 /// Return the login name of the user with the UID given. For example,
 /// `"jsmith"`.
 ///
-/// If the UID does not exist, or the username is invalid UTF-8,
+/// If the UID does not exist, or the login name is invalid UTF-8,
 /// returns None.
-pub fn username(uid: uid_t) -> Option<String> {
+pub fn login_name(uid: uid_t) -> Option<String> {
     let passwd_info = unsafe { libc::getpwuid(uid) };
     if passwd_info.is_null() {
         return None;
@@ -60,9 +60,9 @@ mod tests {
     #[test]
     fn test_root_uid() {
         println!("your uid is {}", current_user_id());
-        println!("your username is {}", current_username());
+        println!("your login_name is {}", current_login_name());
         println!("your full name is {}",
                  user_full_name(current_user_id()).unwrap());
-        assert_eq!(username(0).unwrap(), "root");
+        assert_eq!(login_name(0).unwrap(), "root");
     }
 }
