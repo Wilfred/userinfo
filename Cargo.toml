@@ -4,7 +4,7 @@ name = "userinfo"
 version = "0.1.0"
 
 [target.'cfg(windows)'.dependencies]
-advapi32-sys = "0.2.0"
+advapi32-sys = { git = "https://github.com/Wilfred/winapi-rs.git", branch = "0.2" }
 winapi = "0.2.8"
 
 [target.'cfg(unix)'.dependencies]
